@@ -1,0 +1,40 @@
+{% load bootstrap4 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto</title>
+    {% bootstrap_css %}
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="https://www.djangoproject.com" target="_blank">Django</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Alterna navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href="{% url 'index' %}">Home 
+        <a class="nav-item nav-link active" href="{% url 'produto' %}">Produto</a> <span class="sr-only">(Página atual)</span></a>
+        <a class="nav-item nav-link" href="{% url 'contato' %}">Contato</a>
+      </div>
+    </div>
+  </nav>
+
+<body>
+    <div class="container">
+        <h1>Produto</h1>
+        {% bootstrap_messages %}
+        <form action={% url 'produto' %} method="POST" class="form" autocomplete="off" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submite" class="btn-primary">Cadastrar</button>
+            {% endbuttons %}
+        </form>
+    </div>
+{% bootstrap_javascript jquery='full' %}
+</body>
+</html>
